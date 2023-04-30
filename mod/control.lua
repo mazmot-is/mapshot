@@ -307,10 +307,12 @@ function gen_map_id()
 end
 
 -- Detects if an on-startup screenshot is requested.
-script.on_event(defines.events.on_tick, function(evt)
+---- script.on_event(defines.events.on_tick, function(evt)
+script.on_nth_tick(600, function(evt) -- wait 10s to render flame in furnaces
   log("onstartup check @" .. evt.tick)
   -- Needs to run only once, so unregister immediately.
-  script.on_event(defines.events.on_tick, nil)
+  ---- script.on_event(defines.events.on_tick, nil)
+  script.on_nth_tick(600, nil)
 
   -- Assume player index 1 during startup.
   local player = game.get_player(1)
